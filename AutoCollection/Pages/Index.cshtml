@@ -4,7 +4,26 @@
     ViewData["Title"] = "Home page";
 }
 
+
+@{
+    ViewData["Title"] = "Automobile Database";
+}
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h1 class="display-4">Welcome to Our Automobile Database</h1>
+
+    <p>
+        Explore our collection of automobiles.
+    </p>
+
+    <p>
+        View vehicle information, manufacturers,
+        models, and other automobile details.
+    </p>
+
+    <a class="btn btn-primary" asp-page="/Vehicles/Index">
+        View Automobiles
+    </a>
+
 </div>
