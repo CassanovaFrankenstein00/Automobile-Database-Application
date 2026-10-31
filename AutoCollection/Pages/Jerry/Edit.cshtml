@@ -1,0 +1,205 @@
+@page
+@model AutoCollection.Pages.AutomobilePages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 style="font-size:30px;
+           color:black;
+           margin-bottom:25px;">
+    Automobile
+</h1>
+
+<h2 style="font-size:24px;
+           margin-bottom:30px;">
+    Add / Edit Auto
+</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Automobile.Id" />
+            <!-- MAKE FIELD -->
+            <div style="display:flex;
+            align-items:center;
+            margin-bottom:20px;
+            gap:20px;">
+
+                <label asp-for="Automobile.Make"
+                       style="width:120px;
+                  font-size:20px;">
+                    Make *
+                </label>
+
+                <div>
+                    <input asp-for="Automobile.Make"
+                           aria-required="true"
+                           style="background-color:#d9d9d9;
+                      border:1px solid #cccccc;
+                      padding:10px;
+                      width:250px;" />
+
+                    <span asp-validation-for="Automobile.Make"
+                          class="text-danger"></span>
+                </div>
+
+            </div>
+            <!-- MODEL FIELD -->
+            <div style="display:flex;
+            align-items:center;
+            margin-bottom:20px;
+            gap:20px;">
+
+                <label asp-for="Automobile.Model"
+                       style="width:120px;
+                  font-size:20px;">
+                    Model *
+                </label>
+
+                <div>
+                    <input asp-for="Automobile.Model"
+                           aria-required="true"
+                           style="background-color:#d9d9d9;
+                      border:1px solid #cccccc;
+                      padding:10px;
+                      width:250px;" />
+
+                    <span asp-validation-for="Automobile.Model"
+                          class="text-danger"></span>
+                </div>
+
+            </div>
+            <!-- YEAR FIELD -->
+            <div style="display:flex;
+            align-items:center;
+            margin-bottom:20px;
+            gap:20px;">
+
+                <label asp-for="Automobile.Year"
+                       style="width:120px;
+                  font-size:20px;">
+                    Year *
+                </label>
+
+                <div>
+                    <input asp-for="Automobile.Year"
+                           aria-required="true"
+                           style="background-color:#d9d9d9;
+                      border:1px solid #cccccc;
+                      padding:10px;
+                      width:250px;" />
+
+                    <span asp-validation-for="Automobile.Year"
+                          class="text-danger"></span>
+                </div>
+
+            </div>
+            <!-- TYPE FIELD -->
+            <div style="display:flex;
+            align-items:center;
+            margin-bottom:20px;
+            gap:20px;">
+
+                <label asp-for="Automobile.Type"
+                       style="width:120px;
+                  font-size:20px;">
+                    Type
+                </label>
+
+                <div>
+                    <input asp-for="Automobile.Type"
+                           style="background-color:#d9d9d9;
+                      border:1px solid #cccccc;
+                      padding:10px;
+                      width:250px;" />
+
+                    <span asp-validation-for="Automobile.Type"
+                          class="text-danger"></span>
+                </div>
+
+            </div>
+            <!-- PRICE FIELD -->
+            <div style="display:flex;
+            align-items:center;
+            margin-bottom:20px;
+            gap:20px;">
+
+                <label asp-for="Automobile.Price"
+                       style="width:120px;
+                  font-size:20px;">
+                    Price
+                </label>
+
+                <div>
+                    <input asp-for="Automobile.Price"
+                           style="background-color:#d9d9d9;
+                      border:1px solid #cccccc;
+                      padding:10px;
+                      width:250px;" />
+
+                    <span asp-validation-for="Automobile.Price"
+                          class="text-danger"></span>
+                </div>
+
+            </div>
+            <!-- AGE FIELD -->
+            <div style="display:flex;
+            align-items:center;
+            margin-bottom:20px;
+            gap:20px;">
+
+                <label asp-for="Automobile.Age"
+                       style="width:120px;
+                  font-size:20px;">
+                    Age
+                </label>
+
+                <div>
+                    <input asp-for="Automobile.Age"
+                           style="background-color:#d9d9d9;
+                      border:1px solid #cccccc;
+                      padding:10px;
+                      width:250px;" />
+
+                    <span asp-validation-for="Automobile.Age"
+                          class="text-danger"></span>
+                </div>
+
+            </div>
+            <!-- SAVE AND CANCEL BUTTONS -->
+            <div style="display:flex;
+            align-items:center;
+            gap:100px;
+            margin-top:20px;">
+
+                <input type="submit"
+                       value="Save"
+                       style="background-color:black;
+                  color:white;
+                  border:none;
+                  padding:15px 40px;
+                  font-size:18px;
+                  cursor:pointer;" />
+
+                <a asp-page="./Index"
+                   style="background-color:black;
+              color:white;
+              text-decoration:none;
+              padding:15px 40px;
+              font-size:18px;
+              display:inline-block;">
+                    Cancel
+                </a>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
