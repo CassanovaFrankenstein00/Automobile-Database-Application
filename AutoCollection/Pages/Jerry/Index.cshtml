@@ -1,0 +1,230 @@
+@page
+@model AutoCollection.Pages.Jerry.IndexModel
+
+@{
+    ViewData["Title"] = "Automobile Collection";
+
+    // Get the automobile ID from the URL
+    int? selectedId = null;
+
+    if (int.TryParse(
+        Request.Query["selectedId"].ToString(),
+        out int id))
+    {
+        selectedId = id;
+    }
+
+    // Find the selected automobile
+    var selectedAuto = selectedId.HasValue
+        ? Model.Automobile.FirstOrDefault(a => a.Id == selectedId.Value)
+        : Model.Automobile.FirstOrDefault();
+}
+
+<div style="background-color:white;
+            padding:30px;
+            font-family:Arial, sans-serif;">
+
+    <h1 style="font-size:28px;
+               margin-bottom:30px;">
+        Automobile Collection
+    </h1>
+
+    <div style="display:flex;
+                flex-wrap:wrap;
+                gap:30px;">
+
+        <!-- LEFT SIDE: AUTOMOBILE LISTINGS -->
+        <div style="flex:2;
+                    min-width:320px;">
+
+            <h2 style="font-size:22px;">
+                Automobiles
+            </h2>
+
+            <div style="display:flex;
+                        flex-wrap:wrap;
+                        gap:15px;">
+
+                @foreach (var item in Model.Automobile)
+                {
+                    <div style="background-color:#d9d9d9;
+                                    padding:15px;
+                                    width:180px;
+                                    border:1px solid #ccc;">
+
+                        <p><strong>Auto Number:</strong> @item.Id</p>
+
+                        <p><strong>Make:</strong> @item.Make</p>
+
+                        <p><strong>Model:</strong> @item.Model</p>
+
+                        <div style="display:flex;
+                                        flex-direction:column;
+                                        gap:5px;">
+
+                            <a asp-page="./Index"
+                               asp-route-selectedId="@item.Id"
+                               style="background-color:white;
+              color:black;
+              text-align:center;
+              padding:6px;
+              text-decoration:none;
+              display:block;">
+                                View
+                            </a>
+
+                            <a asp-page="./Edit"
+                               asp-route-id="@item.Id"
+                               style="background-color:white;
+                                          color:black;
+                                          text-align:center;
+                                          padding:6px;
+                                          text-decoration:none;">
+                                Edit
+                            </a>
+
+                            <a asp-page="./Delete"
+                               asp-route-id="@item.Id"
+                               style="background-color:white;
+                                          color:black;
+                                          text-align:center;
+                                          padding:6px;
+                                          text-decoration:none;">
+                                Delete
+                            </a>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <!-- BOTTOM BUTTONS -->
+            <div style="margin-top:25px;
+                        display:flex;
+                        flex-wrap:wrap;
+                        gap:15px;">
+
+                <a asp-page="./Create"
+                   style="background-color:black;
+                          color:white;
+                          padding:10px 20px;
+                          text-decoration:none;">
+                    Add
+                </a>
+
+                <button type="button"
+                        disabled
+                        title="Search will be added in the next step"
+                        style="background-color:black;
+                               color:white;
+                               padding:10px 20px;
+                               opacity:0.5;">
+                    Search
+                </button>
+
+                <button type="button"
+                        disabled
+                        title="Sorting will be added in the next step"
+                        style="background-color:black;
+                               color:white;
+                               padding:10px 20px;
+                               opacity:0.5;">
+                    Sort
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: AUTOMOBILE DETAILS -->
+        <div style="flex:1;
+                    min-width:250px;">
+
+            <h2 style="font-size:22px;
+                       text-align:center;
+                       margin-bottom:30px;">
+                Automobiles Details
+            </h2>
+
+            <!-- MAKE FILTER -->
+            <div style="display:flex;
+                        align-items:center;
+                        gap:10px;
+                        margin-bottom:40px;">
+
+                <label for="makeFilter">Make:</label>
+
+                <input id="makeFilter"
+                       type="text"
+                       disabled
+                       title="Filtering will be added in the next step"
+                       style="background-color:#d9d9d9;
+                              border:none;
+                              padding:8px;
+                              width:120px;" />
+
+                <button type="button"
+                        disabled
+                        title="Filtering will be added in the next step"
+                        style="background-color:black;
+                               color:white;
+                               padding:10px 20px;
+                               border:none;
+                               opacity:0.5;">
+                    Filter
+                </button>
+
+            </div>
+
+            <!-- AUTOMOBILE INFORMATION -->
+            @if (selectedAuto != null)
+            {
+                <div style="display:flex;
+                    flex-wrap:wrap;
+                    gap:20px;">
+
+                    <!-- DESCRIPTION BOX -->
+                    <div style="flex:1;
+                        min-width:140px;">
+
+                        <p>Description</p>
+
+                        <div style="background-color:#d9d9d9;
+                            min-height:160px;
+                            padding:15px;">
+
+                            <strong>@selectedAuto.Make @selectedAuto.Model</strong>
+
+                            <p>Year: @selectedAuto.Year</p>
+
+                            <p>Automobile Number: @selectedAuto.Id</p>
+
+                        </div>
+                    </div>
+
+                    <!-- AUTOMOBILE DETAILS -->
+                    <div style="flex:1;
+                        min-width:160px;">
+
+                        <p><strong>Auto Number:</strong> @selectedAuto.Id</p>
+                        <p><strong>Make:</strong> @selectedAuto.Make</p>
+                        <p><strong>Model:</strong> @selectedAuto.Model</p>
+                        <p><strong>Year:</strong> @selectedAuto.Year</p>
+                        <p><strong>Price:</strong> @selectedAuto.Price</p>
+                        <p><strong>Type:</strong> @selectedAuto.Type</p>
+                        <p><strong>Age:</strong> @selectedAuto.Age</p>
+
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>No automobiles are available.</p>
+            }
+
+        </div>
+
+    </div>
+
+</div>
