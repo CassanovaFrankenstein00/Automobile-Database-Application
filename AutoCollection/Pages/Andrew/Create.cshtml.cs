@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AutoCollection.Models;
 
-namespace AutoCollection.Pages.AutomobilePages;
+namespace AutoCollection.Pages.Andrew;
 
 public class CreateModel : PageModel
 {
