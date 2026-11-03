@@ -1,67 +1,50 @@
 @page
-@using AutoCollection.Pages.Jerry
-@model AutoCollection.Pages.AutomobilePages.IndexModel
+@model AutoCollection.Pages.Andrew.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
+<body class="bg-dark">
+    <div class="p-3">
+    <h1 class="text-white">Index</h1>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Automobile[0].Make)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Automobile[0].Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Automobile[0].Year)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Automobile[0].Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Automobile[0].Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Automobile[0].Age)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+    <div class="btn btn-success ">
+        <a class="text-decoration-none text-white" asp-page="Create">Create New</a>
+    </div>
+    </div>
+    <div class="text-center d-flex flex-wrap gap-3 ">
 @foreach (var item in Model.Automobile) {
-        <tr>
-            <td>
+        <div style="height:80%" class="border bg-black d-flex flex-lg-column p-5 text-white ">
+            <p>
                 @Html.DisplayFor(model => item.Make)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(model => item.Model)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(model => item.Year)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(model => item.Type)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(model => item.Price)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(model => item.Age)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            </p>
+            <div>
+                <div class="btn btn-success">
+                    <a class="text-decoration-none text-white " asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+                </div>
+                <div class="btn btn-dark">
+                    <a class="text-decoration-none text-white " asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                </div>
+                <div class="btn btn-danger">
+                    <a class="text-decoration-none text-white " asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
 }
-    </tbody>
-</table>
+</div>
+</body>
