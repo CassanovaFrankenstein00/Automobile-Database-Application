@@ -112,26 +112,48 @@
                           text-decoration:none;">
                     Add
                 </a>
+                <form method="get"
+                      style="display:flex;
+             gap:5px;
+             flex-wrap:wrap;">
 
-                <button type="button"
-                        disabled
-                        title="Search will be added in the next step"
-                        style="background-color:black;
-                               color:white;
-                               padding:10px 20px;
-                               opacity:0.5;">
-                    Search
-                </button>
+                    <input type="text"
+                           name="SearchString"
+                           value="@Model.SearchString"
+                           placeholder="Search by Make"
+                           style="background-color:#d9d9d9;
+                  border:none;
+                  padding:10px;
+                  width:150px;" />
 
-                <button type="button"
-                        disabled
-                        title="Sorting will be added in the next step"
-                        style="background-color:black;
-                               color:white;
-                               padding:10px 20px;
-                               opacity:0.5;">
-                    Sort
-                </button>
+                    <button type="submit"
+                            style="background-color:black;
+                   color:white;
+                   padding:10px 20px;
+                   border:none;
+                   cursor:pointer;">
+                        Search
+                    </button>
+
+                </form>
+
+                <form method="get"
+                      style="display:flex;">
+
+                    <input type="hidden"
+                           name="SortOrder"
+                           value="make_asc" />
+
+                    <button type="submit"
+                            style="background-color:black;
+                   color:white;
+                   padding:10px 20px;
+                   border:none;
+                   cursor:pointer;">
+                        Sort
+                    </button>
+
+                </form>
 
             </div>
 
@@ -148,34 +170,34 @@
             </h2>
 
             <!-- MAKE FILTER -->
-            <div style="display:flex;
-                        align-items:center;
-                        gap:10px;
-                        margin-bottom:40px;">
+            <form method="get"
+                  style="display:flex;
+             align-items:center;
+             gap:10px;
+             margin-bottom:40px;">
 
                 <label for="makeFilter">Make:</label>
 
                 <input id="makeFilter"
                        type="text"
-                       disabled
-                       title="Filtering will be added in the next step"
+                       name="MakeFilter"
+                       value="@Model.MakeFilter"
+                       placeholder="Enter Make"
                        style="background-color:#d9d9d9;
-                              border:none;
-                              padding:8px;
-                              width:120px;" />
+                  border:none;
+                  padding:8px;
+                  width:120px;" />
 
-                <button type="button"
-                        disabled
-                        title="Filtering will be added in the next step"
+                <button type="submit"
                         style="background-color:black;
-                               color:white;
-                               padding:10px 20px;
-                               border:none;
-                               opacity:0.5;">
+                   color:white;
+                   padding:10px 20px;
+                   border:none;
+                   cursor:pointer;">
                     Filter
                 </button>
 
-            </div>
+            </form>
 
             <!-- AUTOMOBILE INFORMATION -->
             @if (selectedAuto != null)
