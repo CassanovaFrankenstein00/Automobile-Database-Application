@@ -8,6 +8,25 @@
     <div class="p-3">
     <h1 class="text-white">Index</h1>
 
+        <form>
+            <p>
+            <select asp-for="Type" asp-items="Model.Type" class="form-select">
+                <option value="">All</option>
+            </select>
+            <p class="text-white"> Make:<input type="text" asp-for="SearchString" />
+                <input type="submit" value="filter" />
+            </p>
+                <a class="btn btn-outline-light text-decoration-none text-white" asp-page="./Index" asp-route-sortOrder="desc"
+                style="float:left;">
+                sort by model (descending)
+                </a>
+            <a class="text-decoration-none text-white btn btn-danger" asp-page="./Index" asp-route-sortOrder="asc"
+                style="float:right;">
+                sort by model (ascending)
+                </a>
+            </p>
+        </form>
+
     <div class="btn btn-success ">
         <a class="text-decoration-none text-white" asp-page="Create">Create New</a>
     </div>
